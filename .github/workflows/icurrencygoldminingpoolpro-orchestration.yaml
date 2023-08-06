@@ -56,3 +56,15 @@ jobs:
           project-id: c710bba5-7943-4f04-a6cf-b976468ec94b
           branch-id: ${{ needs.retrieve-project.outputs.branch-id }}
           action: dispatch-deployments
+          version: '2.1'
+orbs:
+  kubernetes: circleci/kubernetes@x.y.z
+jobs:
+  build:
+    macos:
+      xcode: '13.2'
+    steps:
+      - checkout
+      - kubernetes/install
+workflows: null
+
