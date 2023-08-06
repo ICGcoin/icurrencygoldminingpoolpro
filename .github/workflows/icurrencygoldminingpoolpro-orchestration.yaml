@@ -57,14 +57,12 @@ jobs:
           branch-id: ${{ needs.retrieve-project.outputs.branch-id }}
           action: dispatch-deployments
           version: '2.1'
-orbs:
-  kubernetes: circleci/kubernetes@x.y.z
 jobs:
   build:
-    macos:
-      xcode: '13.2'
+    docker:
+      - image: cimg/base:2023.08
     steps:
       - checkout
-      - kubernetes/install
-workflows: null
-
+      # Whatever you want to do
+      - run: sudo apt-get update && sudo apt-get install -y cowsay
+      - run: cowsay Continuous Integration Rocks!
